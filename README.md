@@ -37,6 +37,7 @@
 > 🟢 > 🟠 > 🟡 > 🔴 순으로 구현 예정
 
 ## ERD
+![zerobase-cms-project_v00](https://github.com/dev-sam32/zerobase-cms-project/assets/90596545/8e519673-9b1b-4e40-a266-5147bd8c9dbb)
 
 ## 사용 기술 스택
 - Spring Boot : 3.1.11
