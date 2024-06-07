@@ -1,37 +1,59 @@
 package com.zerobase.commerce.product.dto;
 
+import com.zerobase.commerce.product.entity.CategoryType;
 import com.zerobase.commerce.product.entity.Product;
 
 public record ProductDto(
-    Long id,
     String name,
     String category,
     int price,
     int stock
 ) {
 
-  public static ProductDto of(Long id, String name, String category) {
-    return of(id, name, category, 0, 0);
+  /**
+   * 생성자(이름, 카테고리)
+   * @param name
+   * @param category
+   * @return
+   */
+  public static ProductDto of(String name, String category) {
+    return of(name, category, 0, 0);
   }
 
-  public static ProductDto of(Long id, String name, String category, int price, int stock) {
-    return new ProductDto(id, name, category, price, stock);
+  /**
+   * 생성자(이름, 카테고리, 가격, 재고)
+   * @param name
+   * @param category
+   * @param price
+   * @param stock
+   * @return
+   */
+  public static ProductDto of(String name, String category, int price, int stock) {
+    return new ProductDto(name, category, price, stock);
   }
 
+  /**
+   * Entity -> DTO
+   * @param product
+   * @return
+   */
   public static ProductDto from(Product product) {
     return new ProductDto(
-        product.getId(),
         product.getName(),
-        product.getCategory(),
+        product.getCategory().getCode(),
         product.getPrice(),
         product.getStock()
     );
   }
 
+  /**
+   * DTO -> Entity
+   * @return
+   */
   public Product toEntity() {
     return Product.builder()
         .name(name)
-        .category(category)
+        .category(CategoryType.valueOf(category.toUpperCase()))
         .price(price)
         .stock(stock)
         .build();

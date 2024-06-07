@@ -1,2 +1,10 @@
-package com.zerobase.commerce.config;public class AppConfig {
+package com.zerobase.commerce.config;
+
+import org.springframework.context.annotation.Configuration;
+import org.springframework.data.jpa.repository.config.EnableJpaAuditing;
+
+@EnableJpaAuditing
+@Configuration
+public class AppConfig {
+
 }
