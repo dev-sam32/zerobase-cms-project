@@ -1,2 +1,12 @@
 spring:
-  application.name=zerobase-cms-project
+  datasource:
+    url: jdbc:h2:mem:testdb
+#    url: jdbc:mysql://localhost:3306/cms
+#    driver-class-name: com.mysql.cj.jdbc.Driver
+#    username: root
+#    password: password
+
+  jpa:
+    hibernate.ddl-auto: update
+    properties.hibernate.format_sql: true
+    show-sql: true
